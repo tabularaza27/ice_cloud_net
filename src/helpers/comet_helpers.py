@@ -17,12 +17,13 @@ import comet_ml
 import matplotlib.pyplot as plt
 import holoviews as hv
 
-from data.data import VerticalCloudDataModule, LogTransform
+from data.data_module import VerticalCloudDataModule, LogTransform
 from model.LightningModel import VerticalCloudCubeModel
 
-COMET_API_KEY = "Rrwj142Sk080T0Qth3KNdPQg5"
-COMET_WORKSPACE = "tabularaza27"
-COMET_PROJECT = "verticalcloud"
+# todo: setup
+COMET_API_KEY = ""
+COMET_WORKSPACE = ""
+COMET_PROJECT = ""
 
 dm_hparams_config = {'data_dir': str,
  'start_date': datetime.date,
