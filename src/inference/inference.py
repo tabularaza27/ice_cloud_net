@@ -135,11 +135,10 @@ def load_model(data_dir,
     
     train_patch_ids = []
     val_patch_ids = []
-    patch_data_dir = os.path.join(data_dir,"Nice128")
 
     #load data module
     dm_overwrite_hparams = {"era5_variables": ["temperature"],
-                             "data_dir": patch_data_dir,
+                             "data_dir": data_dir,
                              "dataloader_num_workers":4,
                              "train_patch_ids":train_patch_ids, 
                              "val_patch_ids":val_patch_ids,
@@ -502,6 +501,7 @@ if __name__ == "__main__":
     # must have the following subdirectories `WholeAreaPredictions` and files
     # - WholeAreaPredictions (to save IceCloudNet predictions)
     # - SEVIRIWholeAreaInput (seviri data for the whole domain)
+    # - TrainingData (containing patches)
     # - data_stats.csv
     # - seviri_aux_latlon.nc
 
