@@ -117,7 +117,7 @@ if __name__ == '__main__':
     COMET_PROJECT = "comet project"
 
     # define data directory and model config
-    data_dir = "/cluster/work/climate/kjeggle/VerticalCloud/Nice128/" # directory with training data 
+    data_dir = "/path/to/data" # directory with training data 
     model_config = "disc_3d_cond-multipred" # filename of model config; todo edit 
     model_checkpoints_dir = "/path/to/model/checkpoints" # only necessary when loading saved model
     
@@ -187,7 +187,7 @@ if __name__ == '__main__':
                 }
 
     if model_config:
-        model_config_path = f".model_configs/omegaconf_{model_config}.yaml"
+        model_config_path = f".model_configs/{model_config}.yaml"
         conf = OmegaConf.load(model_config_path)
         model_hparams = conf["model"]["params"]
         model_class = AutoencoderKL
