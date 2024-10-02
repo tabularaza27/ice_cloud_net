@@ -1,0 +1,33 @@
+model:
+  base_learning_rate: 4.5e-06
+  target: model.DiscriminatorModel.AutoencoderKL
+  params:
+    monitor: val/rec_loss
+    embed_dim: 16
+    unetconfig:
+      target: model.IWPNetV1.IWPNetV1
+      params:
+        in_channels: 11
+        out_channels: 64
+        dim_mults:
+        - 1
+        - 2
+        - 4
+        extended_final_conv: false
+        residual: true
+        final_relu: true
+        final_rff: false
+        meta_data_embedding: false
+        prediction_heads: 2
+    lossconfig:
+      target: model.patch_gan_loss.DiscriminatorLoss
+      params:
+        disc_start: 25001
+        disc_weight: 0.3
+        perceptual_weight: 0
+        disc_in_channels: 2
+        disc_num_layers: 3
+        ndf: 64
+        discriminator_3D: true
+        disc_conditional: true
+        mask_disc_output: true
