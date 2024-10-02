@@ -1,5 +1,5 @@
 from model.ConvNextEncoder import ConvNextBlock
-from eval.eval_plots import *
+from evaluate.eval_plots import *
 from helpers.comet_helpers import log_image_to_comet
 
 import matplotlib.pyplot as plt
@@ -275,8 +275,8 @@ def plot_and_log(y_hat, dardar, trainer, suffix="",target_variable="iwc",target_
     
 
     # confusion matrix
-    fig = plt_confusion_matrix(y_hat, dardar, cloud_thres=cloud_thres)
-    log_image_to_comet(exp,fig, f"confusion_matrix_{cloud_thres}{suffix}")
+    #fig = plt_confusion_matrix(y_hat, dardar, cloud_thres=cloud_thres)
+    #log_image_to_comet(exp,fig, f"confusion_matrix_{cloud_thres}{suffix}")
     
     # cloud occurance per height level
     df, occurance_p = cloud_occurance_per_height_level(y_hat, dardar, height_levels=height_levels)

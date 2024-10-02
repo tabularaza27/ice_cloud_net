@@ -5,8 +5,7 @@ from torchvision.ops import stochastic_depth
 from inspect import isfunction
 from einops import rearrange
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
-from .RandomFourierTransform import GaussianEncoding
-from .Embedding import MetadataEmbedding
+from model.Embedding import MetadataEmbedding
 
 class SinusoidalPosEmb2d(nn.Module):
     def __init__(self, dim):

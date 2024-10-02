@@ -36,7 +36,7 @@ from model.DiscriminatorModel import AutoencoderKL
 def load_discriminator_model(model_conf_filepath,model_checkpoint_dir, epoch=None):
     # Model with Discriminator
     # base confif
-    model_conf = OmegaConf.load(model_conf)
+    model_conf = OmegaConf.load(model_conf_filepath)
     # load model
 
     model = AutoencoderKL(**model_conf["model"]["params"])
@@ -54,7 +54,10 @@ def load_discriminator_model(model_conf_filepath,model_checkpoint_dir, epoch=Non
             paths.sort(key=os.path.getmtime)
             path = paths[-1]
         print(f"load model from path: {path}")
-        pretrained_state_dict = torch.load(path)["state_dict"]
+        if not torch.cuda.is_available():
+            pretrained_state_dict = torch.load(path,map_location=torch.device('cpu'))["state_dict"]
+        else:
+            pretrained_state_dict = torch.load(path)["state_dict"]
         print("loaded model from disk")
     except IndexError:
         # load from comet
@@ -120,6 +123,8 @@ def add_meta_seviri(seviri_ds, aux_dir):
 def load_model(data_dir,
                model_conf_filepath,
                model_checkpoint_dir, 
+               train_patch_ids=[],
+               val_patch_ids=[],
                checkpoint_epoch=None):
     """initiate model and data module
 
@@ -133,9 +138,6 @@ def load_model(data_dir,
         _type_: _description_
     """
     
-    train_patch_ids = []
-    val_patch_ids = []
-
     #load data module
     dm_overwrite_hparams = {"era5_variables": ["temperature"],
                              "data_dir": data_dir,
