@@ -37,7 +37,7 @@ def get_obj_from_str(string, reload=False):
         importlib.reload(module_imp)
     return getattr(importlib.import_module(module, package=None), cls)
 
-class AutoencoderKL(pl.LightningModule):
+class IceCloudNetDisc(pl.LightningModule):
     def __init__(self,
                  unetconfig,
                  lossconfig,

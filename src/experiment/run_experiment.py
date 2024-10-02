@@ -14,7 +14,7 @@ from omegaconf import OmegaConf
 
 from data.data_module import VerticalCloudDataModule, LogTransform, LogTransform2D
 from model.LightningModel import VerticalCloudCubeModel
-from model.DiscriminatorModel import AutoencoderKL
+from model.DiscriminatorModel import IceCloudNetDisc
 from model.losses import *
 from helpers.callbacks import *
 from helpers.comet_helpers import get_patch_ids, load_experiment
@@ -68,7 +68,7 @@ def main(dm_hparams, model_hparams, gpus, num_nodes, exp_key, comet_logger, mode
             accumulate_grad_batches=2,
             callbacks=[log_image_cb,checkpoint_cb, comet_model_cb, log_meta_cb,control_dropout_cb, lr_cb, val_cb])
     else:
-        if model_class == AutoencoderKL:
+        if model_class == IceCloudNetDisc:
             gpu_strategy = "ddp"
         else:
             gpu_strategy = "ddp_find_unused_parameters_false"
@@ -190,7 +190,7 @@ if __name__ == '__main__':
         model_config_path = f".model_configs/{model_config}.yaml"
         conf = OmegaConf.load(model_config_path)
         model_hparams = conf["model"]["params"]
-        model_class = AutoencoderKL
+        model_class = IceCloudNetDisc
     else:
         model_hparams = {
                             "seviri_channels": seviri_channels,

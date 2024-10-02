@@ -30,7 +30,7 @@ from helpers.comet_helpers import get_patch_ids, load_experiment, get_trained_mo
 
 from data.data_module import LogTransform, LogTransform2D, VerticalCloudDataModule
 
-from model.DiscriminatorModel import AutoencoderKL
+from model.DiscriminatorModel import IceCloudNetDisc
 
 
 def load_discriminator_model(model_conf_filepath,model_checkpoint_dir, epoch=None):
@@ -39,7 +39,7 @@ def load_discriminator_model(model_conf_filepath,model_checkpoint_dir, epoch=Non
     model_conf = OmegaConf.load(model_conf_filepath)
     # load model
 
-    model = AutoencoderKL(**model_conf["model"]["params"])
+    model = IceCloudNetDisc(**model_conf["model"]["params"])
     
     try:
         if epoch:
