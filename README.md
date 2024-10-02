@@ -42,3 +42,10 @@ Steps:
 
 ## Evaluation
 
+Run `EvaluateModel.ipynb`. Requires that co-located patches were created already
+
+## Setup
+
+There are two conda environment files:
+* `satpy.yml` used for everything that requires satpy
+* `pytorch.yml` used for everything that involves pytorch
