@@ -5,9 +5,9 @@ Clouds containing ice remain a source of great uncertainty in climate models and
 
 ![](img/icecloudnet_concept.png)
 
-**Cite as**
+📜 **Cite as**
 ```bibtex
-@misc{jeggle2024icecloudnet3dreconstructioncloud,
+@article{jeggle2024icecloudnet3d,
       title={IceCloudNet: 3D reconstruction of cloud ice from Meteosat SEVIRI}, 
       author={Kai Jeggle and Mikolaj Czerkawski and Federico Serva and Bertrand Le Saux and David Neubauer and Ulrike Lohmann},
       year={2024},
@@ -17,6 +17,8 @@ Clouds containing ice remain a source of great uncertainty in climate models and
       url={https://arxiv.org/abs/2410.04135}, 
 }
 ```
+
+💾 [**Dataset Access at WDC Climate**](https://www.wdc-climate.de/ui/entry?acronym=IceCloudNet_3Drecon_2010)
 
 ## Inference 
 
